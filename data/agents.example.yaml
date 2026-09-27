@@ -1,0 +1,83 @@
+# Example skill registry (DOC-2). This is the single source of truth for
+# the six skills if you build any tooling (a dashboard, a prompt-builder,
+# analytics) over them. Copy to agents.yaml, adjust paths to match where you
+# install the skills and this repo relative to your vault.
+#
+# Field meanings:
+#   id            - matches the skill name under ~/.claude/skills/<id>/SKILL.md
+#   displayName   - human label for any dashboard/UI
+#   skillFile     - absolute path to the skill definition SKILL.md
+#   description   - one line, what the skill does
+#   chatHint      - example phrase to trigger it in chat
+#   order         - display order if you build a UI
+#   stage         - active | in_development | retired
+#   inputs        - optional form fields if you build a dashboard job queue
+#   requirements  - readiness checks: is the skill file present, etc.
+
+agents:
+  - id: worksheet-solver
+    kind: skill
+    displayName: Worksheet Solver
+    skillFile: ~/.claude/skills/worksheet-solver/SKILL.md
+    description: Answers a worksheet (not a spreadsheet) inside the worksheet itself, matching your document's own formatting.
+    chatHint: solve this worksheet
+    order: 1
+    stage: active
+    requirements:
+      - Skill file exists
+
+  - id: excel-solver
+    kind: skill
+    displayName: Excel Solver
+    skillFile: ~/.claude/skills/excel-solver/SKILL.md
+    description: Completes a spreadsheet assignment by following its own Tasks sheet, preserving existing style.
+    chatHint: solve this Excel assignment
+    order: 2
+    stage: active
+    requirements:
+      - Skill file exists
+
+  - id: email-drafter
+    kind: skill
+    displayName: Email Drafter
+    skillFile: ~/.claude/skills/email-drafter/SKILL.md
+    description: Drafts an email to a professor from your professors.yaml directory. Only ever creates a draft, never sends.
+    chatHint: draft an email to my professor about...
+    order: 3
+    stage: active
+    requirements:
+      - Skill file exists
+      - professors.yaml filled in
+
+  - id: presentation-maker
+    kind: skill
+    displayName: Presentation Maker
+    skillFile: ~/.claude/skills/presentation-maker/SKILL.md
+    description: Builds a .pptx deck styled to match your existing decks.
+    chatHint: make a presentation for...
+    order: 4
+    stage: active
+    requirements:
+      - Skill file exists
+
+  - id: flashcard-maker
+    kind: skill
+    displayName: Flashcard Maker
+    skillFile: ~/.claude/skills/flashcard-maker/SKILL.md
+    description: Turns test material into a flashcard set matching your existing card style.
+    chatHint: make flashcards for...
+    order: 5
+    stage: active
+    requirements:
+      - Skill file exists
+
+  - id: the-professor
+    kind: skill
+    displayName: The Professor
+    skillFile: ~/.claude/skills/the-professor/SKILL.md
+    description: Turns source material into chunked learning packets that actually teach it, not a restated summary.
+    chatHint: teach me this file
+    order: 6
+    stage: active
+    requirements:
+      - Skill file exists

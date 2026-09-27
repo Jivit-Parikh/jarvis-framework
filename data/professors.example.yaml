@@ -1,0 +1,23 @@
+# Professor directory for email-drafter.
+#
+# This is an EXAMPLE with invented names, not real data. Copy it to
+# professors.yaml in your own vault's data folder and fill in your own
+# professors. email-drafter matches on name or subject, so it will never
+# find these placeholder rows and stop to ask you instead, which is correct.
+#
+# One entry per professor you email through this system:
+#   id:      short lowercase-hyphen id used to reference this professor
+#   name:    full name as it should appear in a greeting ("Dear Dr. X,")
+#   subject: the course/subject they teach (for matching requests like
+#            "email my statistics professor")
+#   email:   their email address
+#   title:   optional. Overrides the default "Professor <last name>"
+#            greeting, e.g. "Dr." or "Ms."
+#
+# email-drafter reads this file and never invents an entry that isn't here.
+# Fill it in yourself; don't let an assistant guess at a real email address.
+
+- id: example-professor
+  name: Jordan Example
+  subject: Example Course Name
+  email: jordan.example@example.edu
